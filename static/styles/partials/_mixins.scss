@@ -1,0 +1,73 @@
+/// Set media query breakpoint for given device
+/// @example scss
+///    @include breakpoint(mobile) { ... }
+/// @param {String} $device
+@mixin breakpoint($device) {
+    @if $device == mobile {
+        @media (max-width: $mobile_breakpoint) {
+            @content;
+        }
+    }
+    @else if $device == desktop {
+        @media (min-width: $mobile_breakpoint) {
+            @content;
+        }
+    }
+}
+
+/// Position absolute on page
+/// @example scss
+///    @include abs-position(125px, auto, 50px, 15px);
+/// @param {Number} $top [default: auto]
+/// @param {Number} $right [default: auto]
+/// @param {Number} $bottom [default: auto]
+/// @param {Number} $left [default: auto]
+@mixin abs-position($top: auto, $right: auto, $bottom: auto, $left: auto) {
+    top: $top;
+    left: $left;
+    bottom: $bottom;
+    right: $right;
+}
+
+/// Set text sizing
+/// @example scss
+///    @include text-sizing(14px, 500, 20px, center);
+/// @param {Number} $fontSize [default: null]
+/// @param {Number} $fontWeight [default: null]
+/// @param {Number} $lineHeight [default: 1]
+/// @param {String} $textAlign [default: left]
+/// @param {String} $letterSpacing [default: normal]
+@mixin text-sizing($fontSize, $fontWeight, $lineHeight: 1, $textAlign: left, $letterSpacing: normal) {
+  @if ($fontSize) {
+    font-size: $fontSize;
+  }
+  @if ($fontWeight) {
+    font-weight: $fontWeight;
+  }
+
+  line-height: $lineHeight;
+  letter-spacing: $letterSpacing;
+  text-align: $textAlign;
+}
+
+/// Set size - width and height
+/// @example scss
+///    @include size(50px, 100px);
+/// @param {String} $width [default: 100%]
+/// @param {String} $height [default: $width]
+@mixin size($width: 100%, $height: $width) {
+  width: $width;
+  height: $height;
+}
+
+/// Set default pseudo elemtn style
+/// @example scss
+///    @include pseudo;
+/// @param {String} $content [default: '']
+/// @param {String} $display [default: block]
+/// @param {String} $position [default: absolute]
+@mixin pseudo($content: "", $display: block, $position: absolute) {
+  content: $content;
+  display: $display;
+  position: $position;
+}
