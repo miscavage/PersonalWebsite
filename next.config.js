@@ -5,7 +5,7 @@ const withImages = require("next-optimized-images");
 const withPlugins = require("next-compose-plugins");
 const webpack = require("webpack");
 
-const let = {
+const config = {
     assetPrefix: "http://localhost:3000"
 };
 
