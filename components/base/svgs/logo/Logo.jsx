@@ -58,6 +58,6 @@ const Logo = ({
         980 -979 1655 -1874 1939 -184 58 -303 84 -522 112 -206 27 -626 26 -832 0z"/>
         </g>
     </svg>
-);
+)
 
-export default Logo;
+export default Logo
