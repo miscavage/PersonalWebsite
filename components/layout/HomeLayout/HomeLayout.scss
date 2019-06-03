@@ -1,0 +1,159 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: none;
+    box-sizing: border-box;
+}
+
+::selection {
+    background: $color_highlight;
+}
+
+::-moz-selection {
+    background: $color_highlight;
+}
+
+.no-select {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+a, button {
+    cursor: pointer;
+}
+
+.fixed {
+    position: fixed;
+}
+
+.abs {
+    position: absolute;
+
+    &--full {
+        @include size(100%);
+        @include abs-position(0,0,0,0);
+    }
+}
+
+.rel {
+    position: relative;
+
+    &--full {
+        @include size(100%);
+    }
+
+    &--viewport {
+        @include size(100vw, 100vh);
+    }
+}
+
+.hr {
+    border-top: 1px solid $color_grey-light;
+    width: calc(100% - 80px);
+    margin: 25px auto;
+}
+
+.preserve-3d {
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.ease {
+    transition: all 0.25s ease;
+
+    &--sl {
+        transition: all 0.5s ease;
+    }
+
+    &--left {
+        transition: left 0.75s ease;
+    }
+}
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+
+    @include size(100%);
+}
+
+.layout {
+    display: block;
+
+    .main {
+        display: block;
+
+        @include size(100%);
+
+        &.sidebar-open {
+            left: calc(100vw - 80px);
+            right: calc(100vw + 80px);
+
+            @include breakpoint(desktop) {
+                left: 60%;
+                right: -60%;
+            }
+        }
+
+        &.context-open {
+            left: calc(-50% - #{$half_offset});
+            right: calc(50% + #{$half_offset});
+
+            .nav-bar {
+                left: calc(50% + #{$half_offset});
+                right: calc(-50% - #{$half_offset});
+            }
+
+            .footer {
+                display: none;
+            }
+        }
+
+        .content {
+            display: block;
+            overflow: hidden;
+            overflow-y: scroll;
+            background-color: $color_white;
+
+            @include size(100%);
+        }
+    }
+}
+
+#__next {
+    display: block;
+
+    @include size(100%);
+}
+
+@font-face {
+    font-family: $font_normal;
+    src: url("/static/fonts/PlayfairDisplay/PlayfairDisplay-Regular.ttf");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: $font_normal;
+    src: url("/static/fonts/PlayfairDisplay/PlayfairDisplay-Bold.ttf");
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: $font_cursive;
+    src: url("/static/fonts/DrSugiyama/DrSugiyama-Regular.ttf");
+    font-weight: 400;
+    font-style: normal;
+}
