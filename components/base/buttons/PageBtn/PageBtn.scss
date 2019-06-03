@@ -1,0 +1,19 @@
+.page-btn-container {
+    display: block;
+    text-align: left;
+    margin-top: 15px;
+
+    .page-btn {
+        display: inline-block;
+        min-width: 80px;
+        padding: 12px 30px;
+
+        @include make-btn;
+
+        &__title {
+            display: block;
+
+            @include size(100%);
+        }
+    }
+}
