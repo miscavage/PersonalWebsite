@@ -29,6 +29,37 @@
     right: $right;
 }
 
+/// Set border radius and line
+/// @example scss
+///    @include border-design(#fff, 6px);
+/// @param {String} $color [default: #fff]
+/// @param {Number} $radius [default: 0px]
+@mixin border-design($color: #fff, $radius: 0px) {
+    border-radius: $radius;
+    border: 1px solid $color;
+}
+
+/// Set spacing for the bottom of an element
+/// @example scss
+///    @include bottom-spacing(10px, 15px);
+/// @param {Number} $margin [default: 0px]
+/// @param {Number} $padding [default: $margin]
+@mixin bottom-spacing($margin: 0px, $padding: $margin) {
+    margin-bottom: $margin;
+    padding-bottom: $padding;
+}
+
+/// Set input placeholder content
+/// @example scss
+///    @include input-placeholder{ ... }
+@mixin input-placeholder {
+    &.placeholder { @content; }
+    &:-moz-placeholder { @content; }
+    &::-moz-placeholder { @content; }
+    &:-ms-input-placeholder { @content; }
+    &::-webkit-input-placeholder { @content; }
+}
+
 /// Set text sizing
 /// @example scss
 ///    @include text-sizing(14px, 500, 20px, center);
@@ -60,7 +91,39 @@
   height: $height;
 }
 
-/// Set default pseudo elemtn style
+/// Set min size - min-width and min-height
+/// @example scss
+///    @include min-size(50px, 100px);
+/// @param {String} $width [default: 100%]
+/// @param {String} $height [default: $width]
+@mixin min-size($width: 100%, $height: $width) {
+  min-width: $width;
+  min-height: $height;
+}
+
+/// Helper to make .btn class scss content
+/// @example scss
+///    @include make-btn(#000, #fff);
+/// @param {String} $backgroundColor [default: null]
+/// @param {String} $textColor [default: null]
+@mixin make-btn($backgroundColor, $textColor) {
+  background-color: $backgroundColor;
+  color: $textColor;
+
+  &:disabled,
+  &.disabled,
+  &.inactive {
+    color: rgba($textColor, 0.5) !important;
+    background-color: $backgroundColor !important;
+    cursor: not-allowed;
+  }
+
+  &:hover {
+    background-color: darken($backgroundColor, 10%);
+  }
+}
+
+/// Set default pseudo element style
 /// @example scss
 ///    @include pseudo;
 /// @param {String} $content [default: '']
@@ -70,4 +133,30 @@
   content: $content;
   display: $display;
   position: $position;
+}
+
+/// Set button styles
+/// @example scss
+///    @include make-btn;
+@mixin make-btn() {
+    border-bottom: none !important;
+    text-decoration: none;
+    background-color: $color_white;
+    box-shadow:
+        0px 10px 30px -5px rgba($color_black, .15),
+        inset 0px -2px 0px 0px $color_grey;
+
+    @include border-design($color_grey-light, 4px);
+
+    &:hover {
+        transform: scale(1.05);
+        box-shadow:
+            0px 10px 30px -5px rgba($color_black, .3),
+            inset 0px -2px 0px 0px $color_grey;
+    }
+
+    &:active {
+        transform: scale(0.95);
+        box-shadow: 0px 10px 30px -5px rgba($color_black, 0.3);
+    }
 }
