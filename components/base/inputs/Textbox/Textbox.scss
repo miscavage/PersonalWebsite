@@ -1,0 +1,19 @@
+input,
+textarea {
+    border:none;
+    outline:none;
+    margin: 0;
+    padding: 0;
+    font-weight: 300;
+
+    @include input-placeholder {
+        color: $color_grey;
+    }
+}
+
+.textbox {
+    color: $color_black;
+    background-color: $color_transparent;
+
+    @include text-sizing(14px, 300, 22px);
+}
