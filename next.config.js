@@ -23,32 +23,32 @@ const nextConfig = {
                 PropTypes: "prop-types",
             })
         );
-
-        config.module.rules.push({
-            test: /\.(png|jpg|gif|svg|ttf)$/,
-            use: [{
-                loader: "file-loader",
-                options: {
-                    name: "static/images/[name]-[hash].[ext]",
-                    publicPath: config.assetPrefix
-                }
-            }]
-        });
-
-        config.module.rules = config.module.rules.reduce((acc, item) => {
-            if (item.test.toString() === "/\\.scss$/") {
-                item.use.push({
-                    loader: "sass-resources-loader",
+        if (!isServer) {
+            config.module.rules.push({
+                test: /\.(png|jpg|svg)$/,
+                use: [{
+                    loader: "file-loader",
                     options: {
-                        sourceMap: true,
-                        resources: `${process.cwd()}/static/styles/partials/all.scss`
+                        name: "static/images/[name]-[hash].[ext]",
+                        publicPath: config.assetPrefix
                     }
-                });
-            }
-            acc.push(item);
-            return acc;
-        }, []);
+                }]
+            });
 
+            config.module.rules = config.module.rules.reduce((acc, item) => {
+                if (item.test.toString() === "/\\.scss$/") {
+                    item.use.push({
+                        loader: "sass-resources-loader",
+                        options: {
+                            sourceMap: true,
+                            resources: `${process.cwd()}/static/styles/partials/all.scss`
+                        }
+                    });
+                }
+                acc.push(item);
+                return acc;
+            }, []);
+        }
         return config;
     }
 };
