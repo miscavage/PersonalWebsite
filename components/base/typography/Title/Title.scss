@@ -1,0 +1,11 @@
+.title {
+    font-family: $font_cursive;
+    color: $color_white;
+    text-transform: lowercase;
+
+    @include text-sizing(115px, 400, 100px, center);
+
+    @include breakpoint(desktop) {
+      @include text-sizing(250px, 400, 170px, center);
+    }
+}

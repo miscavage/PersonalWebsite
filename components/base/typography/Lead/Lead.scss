@@ -1,0 +1,14 @@
+.lead {
+    font-family: $font_normal;
+    text-transform: capitalize;
+
+    &--light {
+        color: $color_white;
+    }
+
+    &--dark {
+        color: $color_black;
+    }
+
+    @include text-sizing(20px, 400, 40px);
+}

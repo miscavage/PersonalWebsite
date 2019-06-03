@@ -1,0 +1,37 @@
+.header {
+    font-family: $font_normal;
+
+    &--light {
+        color: $color_white;
+    }
+
+    &--dark {
+        color: $color_black;
+    }
+
+    &--lg {
+        @include text-sizing(24px, 400, 44px);
+
+        @include breakpoint(desktop) {
+          @include text-sizing(30px, 400, 52px);
+        }
+    }
+
+    &--md {
+        @include text-sizing(20px, 400, 40px);
+
+        @include breakpoint(desktop) {
+          @include text-sizing(26px, 400, 46px);
+        }
+    }
+
+    &--sm {
+        margin-bottom: 22px;
+
+        @include text-sizing(16px, 400, 30px);
+
+        @include breakpoint(desktop) {
+          @include text-sizing(22px, 400, 34px);
+        }
+    }
+}

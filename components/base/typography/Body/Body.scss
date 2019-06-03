@@ -1,0 +1,17 @@
+.body {
+    font-family: $font_normal;
+
+    &--light {
+        color: $color_grey-light;
+    }
+
+    &--grey {
+        color: $color_grey-dark;
+    }
+
+    &--dark {
+        color: $color_black;
+    }
+
+    @include text-sizing(14px, 400);
+}

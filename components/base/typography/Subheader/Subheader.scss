@@ -1,0 +1,22 @@
+.subheader {
+    font-family: $font_normal;
+    margin-top: 10px;
+
+    @include text-sizing(14px, 600, 1.6);
+
+    &--light {
+        color: $color_grey-light;
+    }
+
+    &--grey {
+        color: $color_grey-dark;
+    }
+
+    &--dark {
+        color: $color_black;
+    }
+
+    @include breakpoint(desktop) {
+        @include text-sizing(16px, 600, 1.8);
+    }
+}
